@@ -1,29 +1,90 @@
 <ion-app>
-  <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content" type="overlay">
-      <ion-content>
-        <ion-list id="inbox-list">
-          <ion-list-header>Inbox</ion-list-header>
-          <ion-note>hi@ionicframework.com</ion-note>
+	<ion-split-pane contentId="main-content">
 
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-            <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
-              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-              <ion-label>{{ p.title }}</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
+		<ion-menu contentId="main-content" type="overlay">
+			<ion-content>
+				<ion-list id="inbox-list" *ngIf="this.authService.loggedIn">
+					<ion-list-header>{{ 'appName' | translate }}</ion-list-header>
+					<ion-note>@Treela</ion-note>
 
-        <ion-list id="labels-list">
-          <ion-list-header>Labels</ion-list-header>
+					<ion-menu-toggle auto-hide="false" *ngFor="let p of appPagesWithCheck(); let i = index">
+						<ion-item (click)="selectedIndex = i; selectedSet = 0;" routerDirection="root" [routerLink]="[p.url]" lines="none"
+							detail="false" [class.selected]="selectedIndex == i && selectedSet == 0">
+							<ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+							<ion-label>{{ p.title + '.title' | translate }}</ion-label>
+						</ion-item>
+					</ion-menu-toggle>
+				</ion-list>
 
-          <ion-item *ngFor="let label of labels" lines="none">
-            <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
-            <ion-label>{{ label }}</ion-label>
-          </ion-item>
-        </ion-list>
-      </ion-content>
-    </ion-menu>
-    <ion-router-outlet id="main-content"></ion-router-outlet>
-  </ion-split-pane>
+				<ion-list id="admin-list" *ngIf="this.authService.isAdmin > 0">
+					<ion-list-header>{{ 'MENU.admin' | translate }}</ion-list-header>
+					
+					<ion-menu-toggle auto-hide="false" *ngFor="let p of adminPages; let i = index">
+						<ion-item (click)="selectedIndex = i; selectedSet = 3;" routerDirection="root" [routerLink]="[p.url]" lines="none"
+							detail="false" [class.selected]="selectedIndex == i && selectedSet == 3">
+							<ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+							<ion-label>{{ p.title + '.title' | translate }}</ion-label>
+						</ion-item>
+					</ion-menu-toggle>
+					
+				</ion-list>
+
+				<ion-list id="user-anonymous-list" *ngIf="!this.authService.loggedIn">
+					<ion-list-header>{{ 'appName' | translate }}</ion-list-header>
+					<ion-note>@Treela</ion-note>
+					<!-- <ion-list-header>{{ 'MENU.account' | translate }}</ion-list-header> -->
+					
+					<ion-menu-toggle auto-hide="false" *ngFor="let p of userAnonymousPages; let i = index">
+						<ion-item (click)="selectedIndex = i; selectedSet = 1;" routerDirection="root" [routerLink]="[p.url]" lines="none"
+							detail="false" [class.selected]="selectedIndex == i && selectedSet == 1">
+							<ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+							<ion-label>{{ p.title + '.title' | translate }}</ion-label>
+						</ion-item>
+					</ion-menu-toggle>
+					
+				</ion-list>
+				<ion-list id="user-list" *ngIf="this.authService.loggedIn">
+					<ion-list-header>{{ 'MENU.account' | translate }}</ion-list-header>
+					<!--
+					<ion-menu-toggle auto-hide="false" *ngFor="let p of userPages; let i = index">
+						<ion-item (click)="selectedIndex = i; selectedSet = 2; this[p.call]();" routerDirection="root" [routerLink]="[p.url]" lines="none"
+							detail="false" [class.selected]="selectedIndex == i && selectedSet == 2">
+							<ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+							<ion-label>{{ p.title }}</ion-label>
+						</ion-item>
+					</ion-menu-toggle>
+					-->
+					<ion-menu-toggle auto-hide="false">
+						<ion-item (click)="selectedIndex = 0; selectedSet = 2;" routerDirection="root" [routerLink]="['profile']" lines="none"
+							detail="false" [class.selected]="selectedIndex == 0 && selectedSet == 2">
+							<ion-icon slot="start" [ios]="'person-outline'" [md]="'person-sharp'"></ion-icon>
+							<ion-label>{{ 'PROFILE.title' | translate }}</ion-label>
+						</ion-item>
+					</ion-menu-toggle>
+					<ion-menu-toggle auto-hide="false">
+						<ion-item (click)="selectedIndex = 1; selectedSet = 2; logout();" routerDirection="root" [routerLink]="['login']" lines="none"
+							detail="false" [class.selected]="selectedIndex == 1 && selectedSet == 2">
+							<ion-icon slot="start" [ios]="'log-out-outline'" [md]="'log-out-sharp'"></ion-icon>
+							<ion-label>{{ 'LOGOUT.title' | translate }}</ion-label>
+						</ion-item>
+					</ion-menu-toggle>
+					
+				</ion-list>
+				<ion-list id="user-settings">
+					<ion-list-header>{{ 'MENU.settings' | translate }}</ion-list-header>
+                    <ion-item>
+						<ion-icon slot="start" [ios]="'language-outline'" [md]="'language-sharp'"></ion-icon>
+                        <ion-select style="min-width: 100%;" placeholder="Select Language" name="languageService.selected" value={{languageService.selected}} (ionChange)="changeLanguage($event)">
+                            <ion-select-option *ngFor="let language of languageService.languages;"
+                                 value={{language.languagecode}}>
+                                 {{language.name}} ({{language.languagecode}})
+                            </ion-select-option>
+                        </ion-select>
+                    </ion-item>
+				</ion-list>
+			</ion-content>
+		</ion-menu>
+
+		<ion-router-outlet id="main-content"></ion-router-outlet>
+	</ion-split-pane>
 </ion-app>
