@@ -1,0 +1,23 @@
+ion-menu-button,
+ion-toolbar ion-button {
+    color: var(--ion-color-primary-contrast);
+}
+
+ion-toolbar ion-title {
+    display: inline-block;
+}
+
+#container {
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+
+.nothing_here {
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--ion-color-medium);
+}

@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button (click)="close();">
+            </ion-back-button>
+        </ion-buttons>
+        <ion-title>{{ 'PROFILE.CHANGE_PHONENO.title' | translate }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <div class="profile-contant">
+        <ion-thumbnail style="display: inline-block;">
+            <img src="/assets/logo/farmer-mobile.png">
+        </ion-thumbnail>
+        <ion-item>
+            <ion-icon color="tertiary" slot="start" [ios]="'call-outline'" [md]="'call-sharp'"></ion-icon>
+            <ion-label>+</ion-label>
+            <ion-input type="tel" inputmode="tel" pattern="\d{10,12}" placeholder="{{ 'PROFILE.CHANGE_PHONENO.new_phoneno' | translate }}" [(ngModel)]="newPhoneNo"></ion-input>
+            <ion-button color="medium" (click)="sendOTP();">{{ 'PROFILE.CHANGE_PHONENO.send_otp' | translate }}</ion-button>
+        </ion-item>
+        <ion-item>
+            <ion-icon color="tertiary" slot="start" [ios]="'keypad-outline'" [md]="'keypad-sharp'"></ion-icon>
+            <ion-input type="number" pattern="\d{6}" placeholder="{{ 'PROFILE.CHANGE_PHONENO.enter_otp' | translate }}" [(ngModel)]="otp"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-icon color="tertiary" slot="start" [ios]="'key-outline'" [md]="'key-sharp'"></ion-icon>
+            <ion-input type="password" pattern="[a-zA-Z\d@_#$%^&]{5,}" placeholder="{{ 'PROFILE.CHANGE_PHONENO.password' | translate }}" [(ngModel)]="password"></ion-input>
+        </ion-item>
+        <br>
+        <ion-button (click)="save();">{{ 'PROFILE.CHANGE_PHONENO.save' | translate }}</ion-button>
+    </div>
+</ion-content>

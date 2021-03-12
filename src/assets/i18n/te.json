@@ -1,0 +1,122 @@
+{
+    "appName": "The Farmer Guy",
+    "MENU": {
+        "account": "ఖాతా",
+        "settings": "సెట్టింగులు",
+        "admin": "అడ్మిన్"
+    },
+    "HOME": {
+        "title": "హోమ్ పేజీ",
+        "search": "వెతకండి",
+        "price": "ధర",
+        "number_of_shops": "దుకాణాల సంఖ్య",
+        "SHOP": {
+            "title": "షాప్ పేజీ",
+            "nothing_here": "ఇక్కడ ఏమి లేదు",
+            "request_sell": "అభ్యర్థన అమ్మకం",
+            "request_sent": "సీక్వెస్ట్ పంపబడింది"
+        },
+        "GET_DATA": {
+            "title": "మీ డేటా",
+            "latest_phoneno": "ప్రస్తుత ఫోన్ నం",
+            "quantity": "పరిమాణం",
+            "unit": "యూనిట్",
+            "ok": "అలాగే"
+        }
+    },
+    "SEARCH": {
+        "title": "శోధన పేజీ"
+    },
+    "SHOP": {
+        "title": "శోధన పేజీ",
+        "save": "సేవ్ చేయండి"
+    },
+    "PROFILE": {
+        "title": "ప్రొఫైల్",
+        "edit": "సవరించండి",
+        "change": "మార్పు",
+        "change_password": "పాస్వర్డ్ మార్చండి",
+        "EDIT": {
+            "title": "సవరించండి",
+            "name": "పేరు",
+            "pincode": "పిన్ కోడ్",
+            "area": "ప్రాంతం",
+            "password": "పాస్వర్డ్",
+            "save": "సేవ్ చేయండి"
+        },
+        "CHANGE_PASSWORD": {
+            "title": "పాస్వర్డ్ మార్చండి",
+            "new_password": "కొత్త పాస్వర్డ్",
+            "new_password_re": "క్రొత్త పాస్‌వర్డ్‌ను తిరిగి నమోదు చేయండి",
+            "old_password": "పాత పాస్వర్డ్",
+            "save": "సేవ్ చేయండి"
+        },
+        "CHANGE_PHONENO": {
+            "title": "ఫోన్ నెం.",
+            "new_phoneno": "(91...) కొత్త ఫోన్ నం.",
+            "enter_otp": "OTP ని నమోదు చేయండి",
+            "password": "పాస్వర్డ్",
+            "send_otp": "OTP పంపండి",
+            "save": "సేవ్ చేయండి"
+        }
+    },
+    "MANAGE_SHOP": {
+        "title": "దుకాణాన్ని నిర్వహించండి",
+        "no_item_to_show": "NO ITEM TO SHOW",
+        "search": "వెతకండి (English only)"
+    },
+    "ADMIN_SELL_REQUESTS": {
+        "title": "అమ్మకం అభ్యర్థనలు (అడ్మిన్)",
+        "nothing_here": "ఇక్కడ ఏమి లేదు",
+        "user": "వినియోగదారు",
+        "product": "ఉత్పత్తి",
+        "shop": "అంగడి",
+        "delete_request": "అభ్యర్థనను తొలగించండి"
+    },
+    "MY_SELL_REQUESTS": {
+        "title": "అభ్యర్థనలను అమ్మండి",
+        "nothing_here": "ఇక్కడ ఏమి లేదు",
+        "product": "ఉత్పత్తి",
+        "shop": "అంగడి",
+        "delete_request": "అభ్యర్థనను తొలగించండి"
+    },
+    "LANGUAGE": {
+        "title": "భాష",
+        "translate": "అనువదించండి",
+        "add_language": "భాషను జోడించండి",
+        "language": "భాష",
+        "translated": "translated",
+        "add": "add",
+        "next": "next",
+        "language_code": "భాషా కోడ్",
+        "language_name": "భాష పేరు"
+    },
+    "LOGIN": {
+        "title": "ప్రవేశించండి",
+        "phone_no": "(91...) చరవాణి సంఖ్య.",
+        "password": "పాస్వర్డ్",
+        "FORGOT_PASSWORD": {
+            "title": "పాస్వర్డ్ మర్చిపోయాను",
+            "enter_otp": "OTP ని నమోదు చేయండి",
+            "new_password": "కొత్త పాస్వర్డ్",
+            "new_password_re": "క్రొత్త పాస్‌వర్డ్‌ను తిరిగి నమోదు చేయండి",
+            "resend_otp": "OTP ను మళ్ళీ పంపు",
+            "save": "సేవ్ చేయండి"
+        }
+    },
+    "LOGOUT": {
+        "title": "లాగ్ అవుట్"
+    },
+    "REGISTER": {
+        "title": "నమోదు",
+        "name": "పేరు",
+        "pincode": "పిన్ కోడ్",
+        "area": "ప్రాంతం",
+        "phoneno": "(91...) చరవాణి సంఖ్య.",
+        "enter_otp": "OTP ని నమోదు చేయండి",
+        "password": "పాస్వర్డ్",
+        "password_re": "పాస్వర్డ్ను తిరిగి నమోదు చేయండి",
+        "send_otp": "OTP పంపండి",
+        "register": "నమోదు"
+    }
+}

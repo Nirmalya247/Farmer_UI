@@ -1,0 +1,98 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>{{ 'ADMIN_SELL_REQUESTS.title' | translate }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+        <ion-toolbar color="primary">
+            <ion-title size="large">{{ 'ADMIN_SELL_REQUESTS.title' | translate }}</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-refresher slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content>
+        </ion-refresher-content>
+    </ion-refresher>
+    <ion-card class="request_data-card" *ngFor="let request_data of request_datas; let i = index;">
+        <ion-card-header>
+            <ion-card-title style="text-transform: capitalize;">
+                {{ 'ADMIN_SELL_REQUESTS.user' | translate }}: {{request_data.user_name}}
+            </ion-card-title>
+            <ion-card-title style="text-transform: capitalize;">
+                {{ 'ADMIN_SELL_REQUESTS.product' | translate }}: {{request_data.product_name}}
+            </ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="request_data-card-content">
+            <ion-card-subtitle>
+                <ion-icon [ios]="'calendar-outline'" [md]="'calendar-sharp'"></ion-icon>
+                <ion-label color="medium">
+                    {{request_data.createdat}}
+                </ion-label>
+            </ion-card-subtitle>
+            <ion-card-subtitle>
+                <ion-icon [ios]="'call-outline'" [md]="'call-sharp'"></ion-icon>
+                <ion-label color="medium">
+                    {{request_data.user_phoneno}}
+                </ion-label>
+            </ion-card-subtitle>
+            <ion-card-subtitle>
+                <ion-icon [ios]="'call-outline'" [md]="'call-sharp'"></ion-icon>
+                <ion-label color="medium">
+                    {{request_data.latestphoneno}}
+                </ion-label>
+            </ion-card-subtitle>
+            <ion-card-subtitle>
+                <ion-icon [ios]="'location-outline'" [md]="'location-sharp'"></ion-icon>
+                <ion-label color="medium">
+                    {{request_data.user_state}}, {{request_data.user_division}}, {{request_data.user_taluk}}
+                </ion-label>
+            </ion-card-subtitle>
+            <ion-card-subtitle>
+                <ion-icon [ios]="'cart-outline'" [md]="'cart-sharp'"></ion-icon>
+                <ion-label color="medium">
+                    {{ request_data.quantity }} {{ request_data.unit }}
+                </ion-label>
+            </ion-card-subtitle>
+            <ion-item lines="none">
+                <ion-button color="danger" (click)="deleteRequest(request_data.id, i)">
+                    <ion-icon name="trash"></ion-icon>{{ 'ADMIN_SELL_REQUESTS.delete_request' | translate }}
+                </ion-button>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+    <div *ngIf="request_datas.length == 0 && !lastPage">
+        <ion-card class="demand-card" *ngFor="let shop of [0, 1, 2, 3, 4]">
+            <ion-card-header>
+                <ion-item lines="none">
+                    <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+                </ion-item>
+                <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+                <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+            </ion-card-header>
+
+            <ion-card-content>
+                <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+                <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+            </ion-card-content>
+            <ion-card-content>
+                <ion-card-subtitle>
+                    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                </ion-card-subtitle>
+                <ion-card-subtitle>
+                    <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+                </ion-card-subtitle>
+            </ion-card-content>
+        </ion-card>
+    </div>
+    <div *ngIf="request_datas.length == 0 && lastPage" class="nothing_here">
+        {{ 'ADMIN_SELL_REQUESTS.nothing_here' | translate }}
+    </div>
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="getRequestsScroll($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

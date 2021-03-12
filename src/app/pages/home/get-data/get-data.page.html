@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button (click)="close();">
+            </ion-back-button>
+        </ion-buttons>
+        <img src="/assets/foods/{{product.img}}.png" style="width: 25px; margin: 0 0 0 0;">
+        <ion-title>{{ product.name }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+    <div class="get-data-contant">
+        <ion-item>
+            <ion-icon color="tertiary" slot="start" [ios]="'call-outline'" [md]="'call-sharp'"></ion-icon>
+            <ion-label>+</ion-label>
+            <ion-input type="tel" inputmode="tel" pattern="\d{10,12}" placeholder="{{ 'HOME.GET_DATA.latest_phoneno' | translate }}" [(ngModel)]="latestPhoneno">
+            </ion-input>
+        </ion-item>
+        <ion-item lines="none">
+            <ion-label slot="start">{{ 'HOME.GET_DATA.quantity' | translate }}</ion-label>
+            <ion-input type="tel" inputmode="tel" pattern="\d{10,12}" placeholder="{{ 'HOME.GET_DATA.quantity' | translate }}" [(ngModel)]="quantity">
+            </ion-input>
+            <ion-label slot="end">{{unit}}</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-range min="0" max="100" [(ngModel)]="quantity">
+                <!-- <ion-icon slot="start" size="small" name="sunny"></ion-icon>
+                <ion-icon slot="end" name="sunny"></ion-icon> -->
+            </ion-range>
+        </ion-item>
+        <ion-item>
+            <ion-label>{{ 'HOME.GET_DATA.unit' | translate }}</ion-label>
+            <ion-select placeholder="Select One" value={{unit}} (ionChange)="unitSelectChange($event)">
+                <ion-select-option *ngFor="let unit of units;" value={{unit}}>
+                    {{unit}}
+                </ion-select-option>
+            </ion-select>
+        </ion-item>
+        <br>
+        <ion-button (click)="ok();">{{ 'HOME.GET_DATA.ok' | translate }}</ion-button>
+    </div>
+</ion-content>

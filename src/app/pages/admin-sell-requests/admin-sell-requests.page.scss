@@ -1,0 +1,37 @@
+ion-menu-button,
+ion-toolbar ion-button {
+    color: var(--ion-color-primary-contrast);
+}
+
+ion-back-button {
+    display: block;
+}
+
+ion-toolbar ion-title {
+    display: inline-block;
+}
+
+ion-content .content {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.request_data-card ion-icon {
+    margin-right: unset;
+    margin-inline-end: 32px;
+}
+
+.request_data-card-content ion-icon {
+    margin-right: unset;
+    margin-inline-end: 4px;
+}
+
+.nothing_here {
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--ion-color-medium);
+}

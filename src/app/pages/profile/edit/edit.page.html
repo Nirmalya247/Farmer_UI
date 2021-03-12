@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button (click)="close();">
+            </ion-back-button>
+        </ion-buttons>
+        <ion-title>{{ 'PROFILE.EDIT.title' | translate }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <div class="profile-contant">
+        <ion-thumbnail style="display: inline-block;">
+            <img src="/assets/logo/farmer-mobile.png">
+        </ion-thumbnail>
+        <ion-item>
+            <ion-icon color="tertiary" slot="start" [ios]="'person-outline'" [md]="'person-sharp'"></ion-icon>
+            <ion-input pattern=".{1,}" placeholder="{{ 'PROFILE.EDIT.name' | translate }}" [(ngModel)]="name"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-icon color="tertiary" slot="start" [ios]="'location-outline'" [md]="'location-sharp'"></ion-icon>
+            <ion-input type="number" pattern="\d{6}" placeholder="{{ 'PROFILE.EDIT.pincode' | translate }}" [(ngModel)]="pincode"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-icon color="tertiary" slot="start" [ios]="'pin-outline'" [md]="'pin-sharp'"></ion-icon>
+            <ion-input pattern=".{1,}" placeholder="{{ 'PROFILE.EDIT.area' | translate }}" [(ngModel)]="area"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-icon color="tertiary" slot="start" [ios]="'key-outline'" [md]="'key-sharp'"></ion-icon>
+            <ion-input type="password" pattern="[a-zA-Z\d@_#$%^&]{5,}" placeholder="{{ 'PROFILE.EDIT.password' | translate }}" [(ngModel)]="password"></ion-input>
+        </ion-item>
+        <br>
+        <ion-button (click)="save();">{{ 'PROFILE.EDIT.save' | translate }}</ion-button>
+    </div>
+</ion-content>

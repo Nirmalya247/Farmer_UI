@@ -1,0 +1,99 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>{{ 'MANAGE_SHOP.title' | translate }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+        <ion-toolbar color="primary">
+            <ion-title size="large">{{ 'MANAGE_SHOP.title' | translate }}</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-refresher slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content>
+        </ion-refresher-content>
+    </ion-refresher>
+    <ion-searchbar placeholder="{{ 'MANAGE_SHOP.search' | translate }}" [(ngModel)]="searchText" (search)="search();" (ionClear)="searchClear();"></ion-searchbar>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button [routerLink]="['shop', 0]">
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+    <ion-grid>
+        <ion-row no-padding>
+            <ion-col col-6 *ngFor="let shop of shops" size-sm>
+
+                <ion-card class="shop-card" style="cursor: pointer;" [routerLink]="['shop', shop.id]">
+                    <ion-card-header>
+                        <ion-card-title>{{shop.name}}</ion-card-title>
+                        <ion-card-subtitle>{{shop.detail}}</ion-card-subtitle>
+                    </ion-card-header>
+
+                    <ion-card-content *ngIf="shop.demands.length == 0">
+                        <ion-item style="text-align: center;" lines="none">
+                            <ion-label>
+                                {{ 'MANAGE_SHOP.no_item_to_show' | translate }}
+                            </ion-label>
+                        </ion-item>
+                    </ion-card-content>
+
+
+                    <ion-card-content style="padding-bottom: 0;">
+                        <ion-list>
+                            <ion-item *ngFor="let demand of shop.demands | slice:0:2;">
+                                <ion-avatar slot="start">
+                                    <img src="/assets/foods/{{demand.product_img}}.png">
+                                </ion-avatar>
+                                <ion-label>
+                                    <ion-text color="primary" style="text-transform: capitalize;">
+                                        {{demand.product_name}}
+                                    </ion-text>
+                                    <ion-text color="medium">
+                                        ({{demand.product_description}})
+                                    </ion-text>
+                                    <ion-text>
+                                        <h2>{{demand.quantity}} {{demand.unit}}</h2>
+                                    </ion-text>
+                                    <ion-text color="medium">
+                                        <h4>{{demand.description}}</h4>
+                                    </ion-text>
+                                </ion-label>
+                                <ion-label>
+                                    <ion-text color="success">
+                                        <h2>{{demand.price}} Rs./ {{demand.unit}}</h2>
+                                    </ion-text>
+                                </ion-label>
+                            </ion-item>
+                        </ion-list>
+                        <ion-item *ngIf="shop.demands.length > 2" style="text-align: center; height: 30px;" lines="none">
+                            <ion-label *ngIf="shop.demands.length > 2" style="padding: 0; height: 20px; margin: 0;">
+                                <ion-icon [ios]="'chevron-down-outline'" [md]="'chevron-down-sharp'"></ion-icon>
+                            </ion-label>
+                        </ion-item>
+                    </ion-card-content>
+
+                    <ion-card-header>
+                        <ion-card-subtitle>
+                            <ion-icon [ios]="'location-outline'" [md]="'location-sharp'"></ion-icon>
+                            <ion-label color="medium">
+                                {{shop.state}}, {{shop.division}}, {{shop.taluk}}
+                            </ion-label>
+                        </ion-card-subtitle>
+                    </ion-card-header>
+                </ion-card>
+
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+
+
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="getShopsScroll($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

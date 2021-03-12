@@ -1,0 +1,29 @@
+ion-menu-button,
+ion-toolbar ion-button {
+    color: var(--ion-color-primary-contrast);
+}
+
+ion-back-button {
+    display: block;
+}
+
+ion-toolbar ion-title {
+    display: inline-block;
+}
+
+#container {
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+
+ion-content .content {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+ion-content .get-data-contant {
+    text-align: center;
+    margin: 20px 10px 20px 10px;
+}

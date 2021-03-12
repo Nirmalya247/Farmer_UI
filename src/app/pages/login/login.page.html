@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>{{ 'LOGIN.title' | translate }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+        <ion-toolbar color="primary">
+            <ion-title size="large">{{ 'LOGIN.title' | translate }}</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <div id="container">
+        <ion-thumbnail style="display: inline-block;">
+            <img src="/assets/logo/farmer-hat.png">
+        </ion-thumbnail>
+        <ion-item>
+            <ion-icon color="tertiary" slot="start" [ios]="'call-outline'" [md]="'call-sharp'"></ion-icon>
+            <ion-label>+</ion-label>
+            <ion-input type="tel" inputmode="tel" pattern="\d{10,12}" type="number" placeholder="{{ 'LOGIN.phone_no' | translate }}" [(ngModel)]="phoneno"></ion-input>
+        </ion-item><br>
+        <ion-item>
+            <ion-icon color="tertiary" slot="start" [ios]="'key-outline'" [md]="'key-sharp'"></ion-icon>
+            <ion-input type="password" placeholder="{{ 'LOGIN.password' | translate }}" [(ngModel)]="password" (keyup.enter)="login()"></ion-input>
+            <!-- <ion-button color="light" [routerLink]="['forgot-password']">Forgot Password</ion-button> -->
+            <ion-button color="light" (click)="openForgotPassword();">{{ 'LOGIN.FORGOT_PASSWORD.title' | translate }}</ion-button>
+        </ion-item><br>
+        <ion-button color="primary" (click)="login();">{{ 'LOGIN.title' | translate }}</ion-button><br>
+        <!--<ion-button color="secondary" routerLink="/register">Register</ion-button>-->
+    </div>
+</ion-content>

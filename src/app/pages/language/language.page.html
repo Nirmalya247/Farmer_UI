@@ -1,0 +1,65 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>{{ 'LANGUAGE.title' | translate }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+        <ion-toolbar color="primary">
+            <ion-title size="large">{{ 'LANGUAGE.title' | translate }}</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <div class="content">
+        <div class="filter-container">
+            <ion-segment [(ngModel)]="tabIndex">
+                <ion-segment-button value="translate">
+                    {{ 'LANGUAGE.translate' | translate }}
+                </ion-segment-button>
+                <ion-segment-button value="add_language">
+                    {{ 'LANGUAGE.add_language' | translate }}
+                </ion-segment-button>
+            </ion-segment>
+            <div class="filters-container">
+                <div *ngIf="tabIndex == 'translate'" class="filters-div">
+                    <ion-item>
+                        <ion-label>{{ 'LANGUAGE.language' | translate }}</ion-label>
+                        <ion-select placeholder="Select Language" value={{languageService.selected}} (ionChange)="selectedLanguageChange($event)">
+                            <ion-select-option *ngFor="let language of languageService.languages; let iProduct = index;" value={{language.languagecode}}>
+                                {{language.name}} ({{language.languagecode}})
+                            </ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-icon color="tertiary" slot="start" [ios]="'text-outline'" [md]="'text-sharp'"></ion-icon>
+                        <ion-input [(ngModel)]="en" placeholder="english (en)"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-icon color="tertiary" slot="start" [ios]="'earth-outline'" [md]="'earth-sharp'"></ion-icon>
+                        <ion-input [(ngModel)]="translated" placeholder="{{ 'LANGUAGE.translated' | translate }}"></ion-input>
+                    </ion-item>
+                    <br>
+                    <ion-button (click)="addTranslate();">{{ 'LANGUAGE.add' | translate }}</ion-button>
+                    <ion-button (click)="nextTranslate();">{{ 'LANGUAGE.next' | translate }}</ion-button>
+                </div>
+                <div *ngIf="tabIndex == 'add_language'" class="filters-div">
+                    <ion-item>
+                        <ion-icon color="tertiary" slot="start" [ios]="'language-outline'" [md]="'language-sharp'"></ion-icon>
+                        <ion-input [(ngModel)]="languageCode" placeholder="{{ 'LANGUAGE.language_code' | translate }}"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-icon color="tertiary" slot="start" [ios]="'text-outline'" [md]="'text-sharp'"></ion-icon>
+                        <ion-input [(ngModel)]="languageName" placeholder="{{ 'LANGUAGE.language_name' | translate }}"></ion-input>
+                    </ion-item>
+                    <br>
+                    <ion-button (click)="addLanguage();">{{ 'LANGUAGE.add' | translate }}</ion-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>

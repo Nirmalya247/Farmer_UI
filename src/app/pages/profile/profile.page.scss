@@ -1,0 +1,22 @@
+ion-menu-button,
+ion-toolbar ion-button {
+    color: var(--ion-color-primary-contrast);
+}
+
+ion-toolbar ion-title {
+    display: inline-block;
+}
+
+ion-content {
+    text-align: center;
+}
+
+.profile-contant {
+    margin: 20px 10px;
+}
+
+.profile-contant ion-item {
+    width: 500px;
+    max-width: 100%;
+    display: inline-block;
+}

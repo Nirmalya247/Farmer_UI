@@ -1,0 +1,122 @@
+{
+    "appName": "The Farmer Guy",
+    "MENU": {
+        "account": "নিজের বিবরণ",
+        "settings": "সেটিংস",
+        "admin": "অ্যাডমিন"
+    },
+    "HOME": {
+        "title": "হোম",
+        "search": "অনুসন্ধান",
+        "price": "মূল্য",
+        "number_of_shops": "দোকান সংখ্যা",
+        "SHOP": {
+            "title": "দোকান",
+            "nothing_here": "এখানে কিছু নেই",
+            "request_sell": "বিক্রয়ের জন্য অনুরোধ",
+            "request_sent": "অনুরোধ পাঠানো হয়েছে"
+        },
+        "GET_DATA": {
+            "title": "আপনার তথ্য",
+            "latest_phoneno": "বর্তমান ফোন নং",
+            "quantity": "পরিমাণ",
+            "unit": "একক",
+            "ok": "ঠিক আছে"
+        }
+    },
+    "SEARCH": {
+        "title": "অনুসন্ধান"
+    },
+    "SHOP": {
+        "title": "দোকান",
+        "save": "সংরক্ষণ"
+    },
+    "PROFILE": {
+        "title": "প্রোফাইল",
+        "edit": "পরিবর্তন করুন",
+        "change": "পরিবর্তন করুন",
+        "change_password": "পাসওয়ার্ড পরিবর্তন করুন",
+        "EDIT": {
+            "title": "পরিবর্তন",
+            "name": "নাম",
+            "pincode": "পিনকোড",
+            "area": "অঞ্চল",
+            "password": "পাসওয়ার্ড",
+            "save": "সংরক্ষণ"
+        },
+        "CHANGE_PASSWORD": {
+            "title": "পাসওয়ার্ড পরিবর্তন",
+            "new_password": "নতুন পাসওয়ার্ড",
+            "new_password_re": "নতুন পাসওয়ার্ড আবার লিখুন",
+            "old_password": "পুরাতন পাসওয়ার্ড",
+            "save": "সংরক্ষণ"
+        },
+        "CHANGE_PHONENO": {
+            "title": "ফোন নম্বর পরিবর্তন",
+            "new_phoneno": "(91...) নতুন ফোন নং",
+            "enter_otp": "OTP প্রবেশ করান",
+            "password": "পাসওয়ার্ড",
+            "send_otp": "OTP প্রেরণ করুন",
+            "save": "সংরক্ষণ"
+        }
+    },
+    "MANAGE_SHOP": {
+        "title": "দোকান পরিচালনা",
+        "no_item_to_show": "NO ITEM TO SHOW",
+        "search": "অনুসন্ধান (English only)"
+    },
+    "ADMIN_SELL_REQUESTS": {
+        "title": "বিক্রয় অনুরোধ (অ্যাডমিন)",
+        "nothing_here": "এখানে কিছু নেই",
+        "user": "ব্যবহারকারী",
+        "product": "পণ্য",
+        "shop": "দোকান",
+        "delete_request": "অনুরোধ মুছুন"
+    },
+    "MY_SELL_REQUESTS": {
+        "title": "বিক্রয় অনুরোধ",
+        "nothing_here": "এখানে কিছু নেই",
+        "product": "পণ্য",
+        "shop": "দোকান",
+        "delete_request": "অনুরোধ মুছুন"
+    },
+    "LANGUAGE": {
+        "title": "ভাষা",
+        "translate": "অনুবাদ",
+        "add_language": "ভাষা যুক্ত করুন",
+        "language": "ভাষা",
+        "translated": "অনুবাদিত",
+        "add": "যোগ করুন",
+        "next": "পরবর্তী",
+        "language_code": "ভাষা কোড",
+        "language_name": "ভাষার নাম"
+    },
+    "LOGIN": {
+        "title": "প্রবেশ",
+        "phone_no": "(91...) ফোন নম্বর",
+        "password": "পাসওয়ার্ড",
+        "FORGOT_PASSWORD": {
+            "title": "পাসওয়ার্ড ভুলে গেছেন",
+            "enter_otp": "ওটিপি প্রবেশ করান",
+            "new_password": "নতুন পাসওয়ার্ড",
+            "new_password_re": "নতুন পাসওয়ার্ড আবার লিখুন",
+            "resend_otp": "পুনরায় OTP পাঠান",
+            "save": "সংরক্ষণ"
+        }
+    },
+    "LOGOUT": {
+        "title": "প্রস্থান"
+    },
+    "REGISTER": {
+        "title": "নিবন্ধন",
+        "name": "নাম",
+        "pincode": "পিনকোড",
+        "area": "অঞ্চল",
+        "phoneno": "(91...) ফোন নম্বর",
+        "enter_otp": "ওটিপি প্রবেশ করান",
+        "password": "পাসওয়ার্ড",
+        "password_re": "পাসওয়ার্ড আবার লিখুন",
+        "send_otp": "OTP পাঠান",
+        "register": "নিবন্ধন করুন"
+    }
+}

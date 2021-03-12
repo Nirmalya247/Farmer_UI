@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button (click)="close();">
+            </ion-back-button>
+        </ion-buttons>
+        <ion-title>{{ 'SEARCH.title' | translate }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+        <ion-toolbar color="primary">
+            <ion-title size="large">{{ 'SEARCH.title' | translate }}</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <div class="content">
+        <div class="filter-container">
+            <ion-item text-center lines="none">
+                <ion-label style="text-align: center;">
+                    <ion-button [color]="searchIndex == i ? 'primary' : 'medium'" (click)="searchIndex = i;" lines="none" detail="false" *ngFor="let p of searchIndexes; let i = index">
+                        <!--                     
+                    <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+                     -->
+                        {{ p.text }}
+                    </ion-button>
+                </ion-label>
+            </ion-item>
+            <div class="filters-container">
+                <ion-item *ngIf="searchIndex == 0">
+                    <ion-icon slot="start" [ios]="'business-outline'" [md]="'business-sharp'"></ion-icon>
+                    <ion-input [(ngModel)]="searchIndexes[0].value" placeholder="shop name"></ion-input>
+                </ion-item>
+            </div>
+        </div>
+        <div class="submit-container">
+            <ion-button class="submit-buts">submit</ion-button>
+        </div>
+    </div>
+</ion-content>

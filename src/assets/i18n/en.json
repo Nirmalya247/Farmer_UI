@@ -1,0 +1,122 @@
+{
+    "appName": "The Farmer Guy",
+    "MENU": {
+        "account": "account",
+        "settings": "settings",
+        "admin": "admin"
+    },
+    "HOME": {
+        "title": "home page",
+        "search": "search",
+        "price": "price",
+        "number_of_shops": "number of shops",
+        "SHOP": {
+            "title": "shop page",
+            "nothing_here": "nothing here",
+            "request_sell": "request sell",
+            "request_sent": "sequest sent"
+        },
+        "GET_DATA": {
+            "title": "get data",
+            "latest_phoneno": "latest phone no.",
+            "quantity": "quantity",
+            "unit": "unit",
+            "ok": "ok"
+        }
+    },
+    "SEARCH": {
+        "title": "search page"
+    },
+    "SHOP": {
+        "title": "search page",
+        "save": "save"
+    },
+    "PROFILE": {
+        "title": "profile",
+        "edit": "edit",
+        "change": "change",
+        "change_password": "change password",
+        "EDIT": {
+            "title": "edit",
+            "name": "name",
+            "pincode": "pincode",
+            "area": "area",
+            "password": "password",
+            "save": "save"
+        },
+        "CHANGE_PASSWORD": {
+            "title": "change password",
+            "new_password": "new password",
+            "new_password_re": "re-enter new password",
+            "old_password": "old password",
+            "save": "save"
+        },
+        "CHANGE_PHONENO": {
+            "title": "change phone no.",
+            "new_phoneno": "(91...) new phone no.",
+            "enter_otp": "enter OTP",
+            "password": "password",
+            "send_otp": "send OTP",
+            "save": "save"
+        }
+    },
+    "MANAGE_SHOP": {
+        "title": "manage shop",
+        "no_item_to_show": "NO ITEM TO SHOW",
+        "search": "search (English only)"
+    },
+    "ADMIN_SELL_REQUESTS": {
+        "title": "Sell Requests (ADMIN)",
+        "nothing_here": "nothing here",
+        "user": "user",
+        "product": "product",
+        "shop": "shop",
+        "delete_request": "delete request"
+    },
+    "MY_SELL_REQUESTS": {
+        "title": "Sell Requests",
+        "nothing_here": "nothing here",
+        "product": "product",
+        "shop": "shop",
+        "delete_request": "delete request"
+    },
+    "LANGUAGE": {
+        "title": "Language",
+        "translate": "translate",
+        "add_language": "add language",
+        "language": "language",
+        "translated": "translated",
+        "add": "add",
+        "next": "next",
+        "language_code": "language code",
+        "language_name": "language name"
+    },
+    "LOGIN": {
+        "title": "login",
+        "phone_no": "(91...) phone no.",
+        "password": "password",
+        "FORGOT_PASSWORD": {
+            "title": "forgot password",
+            "enter_otp": "enter OTP",
+            "new_password": "new password",
+            "new_password_re": "re-enter new password",
+            "resend_otp": "resend OTP",
+            "save": "save"
+        }
+    },
+    "LOGOUT": {
+        "title": "logout"
+    },
+    "REGISTER": {
+        "title": "register",
+        "name": "name",
+        "pincode": "pincode",
+        "area": "area",
+        "phoneno": "(91...) phone no. with country code",
+        "enter_otp": "enter OTP",
+        "password": "password",
+        "password_re": "re-enter password",
+        "send_otp": "send OTP",
+        "register": "register"
+    }
+}

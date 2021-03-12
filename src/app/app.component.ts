@@ -97,7 +97,7 @@ export class AppComponent implements OnInit {
         router.events.subscribe((val) => {
             if (val instanceof NavigationEnd) {
                 if (val.url.split('/')[1] == "" && !this.authService.loggedIn) {
-                    this.setMenuColor('login');
+                    this.setMenuColor('register');
                 }else if (val.url.split('/')[1] == "" && this.authService.loggedIn) {
                     this.setMenuColor('home');
                 } else {
@@ -158,5 +158,8 @@ export class AppComponent implements OnInit {
     }
     changeLanguage(e) {
         this.languageService.setLanguage(e.target.value);
+    }
+    compareFnLanguage(l1, l2) {
+        return l1 == l2;
     }
 }

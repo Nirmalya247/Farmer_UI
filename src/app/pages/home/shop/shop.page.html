@@ -1,0 +1,95 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button (click)="close();">
+            </ion-back-button>
+        </ion-buttons>
+        <img src="/assets/foods/{{product.img}}.png" style="width: 25px; margin: 0 0 0 0;">
+        <ion-title>{{ product.name }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+        <ion-toolbar color="primary">
+            <ion-title size="large">{{ 'SHOP.title' | translate }}</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-card class="demand-card" *ngFor="let shop of shopByProduct; let i = index;">
+        <ion-card-header>
+            <ion-item lines="none">
+                <!-- <img src="/assets/foods/{{demand.product_img}}.png"
+                    style="width: 40px; border-radius: 50%; margin: 0 20px 0 0;"> -->
+                <ion-card-title style="text-transform: capitalize;">
+                    {{shop.shop_name}}
+                </ion-card-title>
+                <!-- <ion-input slot="end" placeholder="my price" style="width: 35px;"></ion-input> -->
+                <!-- <ion-button slot="end" *ngIf="!shop.sellrequested && authService.loggedIn"
+                    (click)="sendRequest(i, shop.demand_id);">
+                    {{ 'HOME.SHOP.request_sell' | translate }}
+                </ion-button>
+                <ion-label color="medium" slot="end" *ngIf="shop.sellrequested" style="text-align: right;">{{ 'HOME.SHOP.request_sent' | translate }}</ion-label> -->
+            </ion-item>
+            <ion-card-subtitle style="text-transform: capitalize;">
+                {{shop.shop_detail}}
+            </ion-card-subtitle>
+            <ion-card-subtitle style="text-transform: capitalize;">
+                {{shop.demand_description}}
+            </ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+            <ion-label color="medium">
+                {{shop.demand_quantity}} {{shop.demand_unit}}
+            </ion-label>
+            <ion-label color="success" style="margin-left: 20px;">
+                {{shop.demand_price}} Rs./ {{shop.demand_unit}}
+            </ion-label>
+        </ion-card-content>
+        <ion-card-content>
+            <ion-card-subtitle>
+                <ion-icon [ios]="'location-outline'" [md]="'location-sharp'"></ion-icon>
+                <ion-label color="medium">
+                    {{shop.shop_state}}, {{shop.shop_division}}, {{shop.shop_taluk}}
+                </ion-label>
+            </ion-card-subtitle>
+            <ion-card-subtitle>
+                <ion-icon [ios]="'call-outline'" [md]="'call-sharp'"></ion-icon>
+                <ion-label color="medium">
+                    {{formatPhoneNumber(shop.shop_phoneno.toString())}}, {{formatPhoneNumber(shop.shop_alternateno.toString())}}
+                </ion-label>
+            </ion-card-subtitle>
+        </ion-card-content>
+    </ion-card>
+    <div *ngIf="shopByProduct.length == 0 && !lastPage">
+        <ion-card class="demand-card" *ngFor="let shop of [0, 1, 2, 3, 4]">
+            <ion-card-header>
+                <ion-item lines="none">
+                    <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+                </ion-item>
+                <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+                <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+            </ion-card-header>
+
+            <ion-card-content>
+                <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+                <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+            </ion-card-content>
+            <ion-card-content>
+                <ion-card-subtitle>
+                    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                </ion-card-subtitle>
+                <ion-card-subtitle>
+                    <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+                </ion-card-subtitle>
+            </ion-card-content>
+        </ion-card>
+    </div>
+    <div *ngIf="shopByProduct.length == 0 && lastPage" class="nothing_here">
+        {{ 'HOME.SHOP.nothing_here' | translate }}
+    </div>
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="getShopsScroll($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

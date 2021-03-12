@@ -1,0 +1,48 @@
+ion-content .content {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+ion-content .content .filter-container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    bottom: 65px;
+    display: grid;
+    grid-template-columns: minmax(150px, 25%) 1fr;
+}
+
+.filter-container .filter-menu-container {
+    height: 100%;
+    border-width: 0 1px 0 0;
+    border-style: solid;
+    border-color: var(--ion-color-light);
+}
+
+.filter-container .filter-menu-container ion-item {
+    cursor: pointer;
+}
+
+.filter-container .filter-menu-container ion-item.selected {
+  --background: rgba(var(--ion-color-primary-rgb), 0.14);
+}
+
+.filter-container .filter-menu-container ion-item.selected ion-icon {
+  color: var(--ion-color-primary);
+}
+
+.content .submit-container {
+    position: absolute;
+    height: 65px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-width: 1px 0 0 0;
+    border-style: solid;
+    border-color: var(--ion-color-light);
+}
+
+.submit-container .submit-buts {
+    float: right;
+    margin: 15px;
+}

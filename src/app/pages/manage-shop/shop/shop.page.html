@@ -1,0 +1,154 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button (click)="close();">
+            </ion-back-button>
+        </ion-buttons>
+        <ion-title>{{ toEdit ? "Edit Shop" : "Add Shop" }}</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="save();">{{ 'SHOP.save' | translate }}</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+        <ion-toolbar color="primary">
+            <ion-title size="large">{{ 'SHOP.title' | translate }}</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button>
+            <ion-icon name="add" (click)="addDemand();"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+    <div class="content">
+        <ion-card class="admin-shop-card">
+            <ion-card-header>
+                <ion-card-title style="text-transform: capitalize;">
+                    Shop Details
+                </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <ion-item>
+                    <ion-icon [ios]="'business-outline'" [md]="'business-sharp'"></ion-icon>
+                    <ion-input [(ngModel)]="shop.name" placeholder="Shop Name" (ionChange)="shopUpdated();"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-icon [ios]="'reader-outline'" [md]="'reader-sharp'"></ion-icon>
+                    <ion-input [(ngModel)]="shop.detail" placeholder="Shop Detail" (ionChange)="shopUpdated();"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-icon [ios]="'call-outline'" [md]="'call-sharp'"></ion-icon>
+                    <ion-label>+</ion-label>
+                    <ion-input type="tel" inputmode="tel" pattern="\d{10,12}" [(ngModel)]="shop.phoneno" placeholder="(+91...) Phone Number" (ionChange)="shopUpdated();"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-icon [ios]="'call-outline'" [md]="'call-sharp'"></ion-icon>
+                    <ion-label>+</ion-label>
+                    <ion-input type="tel" inputmode="tel" pattern="\d{10,12}" [(ngModel)]="shop.alternateno" placeholder="(+91...) Alternate Number" (ionChange)="shopUpdated();"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-icon [ios]="'location-outline'" [md]="'location-sharp'"></ion-icon>
+                    <ion-input type="number" pattern="\d{6}" [(ngModel)]="shop.pincode" placeholder="Pincode" (ionChange)="shopUpdated();"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-icon [ios]="'pin-outline'" [md]="'pin-sharp'"></ion-icon>
+                    <ion-input [(ngModel)]="shop.area" placeholder="Area" (ionChange)="shopUpdated();"></ion-input>
+                </ion-item>
+                <ion-item lines="none">
+                    <ion-button color="danger" (click)="deleteShop();">
+                        <ion-icon name="trash"></ion-icon>delete shop</ion-button>
+                </ion-item>
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card class="demand-card" *ngFor="let demand of shop.demands; let i = index;">
+            <ion-card-header>
+                <ion-item lines="none">
+                    <img src="/assets/foods/{{demand.product_img}}.png" style="width: 40px; margin: 0 20px 0 0;">
+                    <ion-card-title style="text-transform: capitalize;">
+                        {{demand.product_name}}
+                    </ion-card-title>
+                </ion-item>
+                <ion-card-subtitle style="text-transform: capitalize;">
+                    {{demand.product_description}}
+                </ion-card-subtitle>
+                <ion-card-subtitle style="text-transform: capitalize;">
+                    {{demand.description}}
+                </ion-card-subtitle>
+            </ion-card-header>
+
+            <ion-card-content>
+                <ion-label color="medium">
+                    {{demand.quantity}} {{demand.unit}}
+                </ion-label>
+                <ion-label color="success" style="margin-left: 20px;">
+                    {{demand.price}} Rs./ {{demand.unit}}
+                </ion-label>
+
+                <ion-list>
+                    <!-- <ion-list-header>
+                        <ion-label>
+                            Single Selection
+                        </ion-label>
+                    </ion-list-header> -->
+                    <ion-item>
+                        <ion-label>Product</ion-label>
+                        <ion-img src="/assets/foods/{{demand.product_img}}.png" style="width: 40px; border-radius: 50%; margin: 0 20px 0 0;"></ion-img>
+                        <ion-select placeholder="Select One" value={{demand.productid}} (ionChange)="productSelectChange($event, i)">
+                            <ion-select-option value=0>Custom</ion-select-option>
+                            <ion-select-option *ngFor="let product of products; let iProduct = index;" value={{product.productid}}>
+                                {{product.name}}
+                            </ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-list>
+            </ion-card-content>
+            <ion-card-content *ngIf="!demand.productid">
+                <ion-label>
+                    Custom Product Details
+                </ion-label>
+                <ion-item>
+                    <ion-input placeholder="Product Name" [(ngModel)]="demand.product_name" (ionChange)="demandUpdated(i);"></ion-input>
+                </ion-item>
+                <ion-list>
+                    <ion-item>
+                        <ion-label>Product Image</ion-label>
+                        <ion-select placeholder="Select One" value={{demand.product_img}} (ionChange)="productCustomImageChange($event, i)">
+                            <ion-select-option *ngFor="let image of images; let iProduct = index;" value={{image}}>
+                                {{image}}
+                            </ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-list>
+                <ion-item>
+                    <ion-input placeholder="Product Detail" [(ngModel)]="demand.product_description" (ionChange)="demandUpdated(i);"></ion-input>
+                </ion-item>
+            </ion-card-content>
+
+
+            <ion-card-content>
+                <ion-label>
+                    Order Details
+                </ion-label>
+                <ion-item>
+                    <ion-input placeholder="Unit (ex: Kg/Liter/etc.)" [(ngModel)]="demand.unit" (ionChange)="demandUpdated(i);"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="number" placeholder="Quantity" [(ngModel)]="demand.quantity" (ionChange)="demandUpdated(i);"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="number" placeholder="Price / Unit" [(ngModel)]="demand.price" (ionChange)="demandUpdated(i);"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input placeholder="Demand description" [(ngModel)]="demand.description" (ionChange)="demandUpdated(i);"></ion-input>
+                </ion-item>
+                <ion-item lines="none" class="demand-delete">
+                    <ion-button color="danger" (click)="deleteDemand(i);">
+                        <ion-icon name="trash"></ion-icon>delete demand</ion-button>
+                </ion-item>
+            </ion-card-content>
+        </ion-card>
+    </div>
+</ion-content>
